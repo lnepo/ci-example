@@ -13,7 +13,7 @@ jobs:
             sudo apt install python3-pip
             sudo pip3 install awsebcli --upgrade
       - run: cd ./src && npm install && npm run build && npm audit
-      - run: npm audit fix
+      - run: npm audit fix --force
       - persist_to_workspace:
           root: .
           paths:
@@ -26,7 +26,6 @@ jobs:
           at: .
       - checkout
       - run: cd ./src && npm run test
-      - run: npm audit fix
       - persist_to_workspace:
           root: .
           paths:
