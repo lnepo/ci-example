@@ -2,7 +2,7 @@ version: 2.1
 
 jobs:
   build:
-    machine:
+    docker:
       image: cimg/node:19.5.0
     steps:
       - checkout
@@ -19,7 +19,7 @@ jobs:
           paths:
             - .
   test:
-    machine:
+    docker:
       image: cimg/node:19.5.0
     steps:
       - attach_workspace:
@@ -31,7 +31,7 @@ jobs:
           paths:
             - .
   deploy:
-    machine:
+    docker:
         image: cimg/node:19.5.0
     steps:
       - attach_workspace:
