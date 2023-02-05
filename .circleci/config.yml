@@ -37,7 +37,12 @@ jobs:
       - attach_workspace:
           at: .
       - checkout
-      - run: aws s3 sync ./public/build s3://challenge-fsl-test
+      - run: 
+          name: deploy
+          command: |
+            if [ $CIRCLE_BRANCH = 'main' ]; then
+              aws s3 sync build s3://challenge-fsl-test --delete --exact-timestamps;
+            fi
     
 
 workflows:
