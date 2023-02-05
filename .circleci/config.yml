@@ -12,7 +12,8 @@ jobs:
             sudo apt-get update
             sudo apt install python3-pip
             sudo pip3 install awsebcli --upgrade
-      - run: cd ./public && npm install && npm run build && npm install react-scripts@5.0.1
+      - run: npm install nth-check --no-audit
+      - run: cd ./public && npm install && npm run build && npm install react-scripts@5.0.1 
       - run: npm audit fix --force
       - run: npm audit
       - persist_to_workspace:
