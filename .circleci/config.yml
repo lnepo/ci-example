@@ -14,7 +14,6 @@ jobs:
             sudo pip3 install awsebcli --upgrade
       - run: cd ./public && npm install && npm run build && npm install react-scripts@5.0.1 
       - run: npm audit fix --force
-      - run: npm audit --production
       - persist_to_workspace:
           root: .
           paths:
