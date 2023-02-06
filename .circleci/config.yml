@@ -1,9 +1,9 @@
 version: 2.1
-orbs:
-  node: circleci/node@5.0.2
 jobs:
   build:
-    executor: node/default
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:12-browsers
     steps:
       - checkout
       - restore_cache:
@@ -12,16 +12,13 @@ jobs:
           - v1-dependencies-
       - run:
           name: Install dependencies
-          command: npm install && npm install react-scripts@5.0.1  && npm audit fix --force
+          command: npm Install && npm install lint && npm install prettier
       - run:
-          name: Lint dependencies
-          command: npm run lint
+          name: Lint run dependencies
+          command: npm run lint 
       - run:
-          name: Prettier dependencies
+          name: prettier install dependencies
           command: npm run prettier
-      - run:
-          name: Test
-          command: npm install
       - save_cache:
           key: v1-dependencies-{{ checksum "package-lock.json" }}
           paths:
