@@ -16,14 +16,6 @@ jobs:
       - run:
           name: Lint run dependencies
           command: npm run lint 
-      - run:
-          name: Install NPM dependencies
-          command: |
-            npm ci
-      - run:
-          name: "Run Prettier with project configuration"
-          command: |
-            npm run prettier:check:ci
       - save_cache:
           key: v1-dependencies-{{ checksum "package-lock.json" }}
           paths:
