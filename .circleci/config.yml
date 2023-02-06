@@ -17,6 +17,10 @@ jobs:
           name: Lint run dependencies
           command: npm run lint 
       - run:
+          name: Install NPM dependencies
+          command: |
+            npm ci
+      - run:
           name: "Run Prettier with project configuration"
           command: |
             npm run prettier:check:ci
