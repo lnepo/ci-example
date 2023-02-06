@@ -12,7 +12,7 @@ jobs:
           - v1-dependencies-
       - run:
           name: Install dependencies
-          command: npm Install && npm install lint && npm install prettier
+          command: npm install && npm install lint && npm install prettier
       - run:
           name: Lint run dependencies
           command: npm run lint 
